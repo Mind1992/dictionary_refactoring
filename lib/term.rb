@@ -24,4 +24,8 @@ class Term
   def edit_word(new_word)
     @word = new_word
   end
+
+  def edit_definition(new_definition)
+    @definition = new_definition
+  end
 end

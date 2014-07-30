@@ -42,5 +42,14 @@ describe Term do
     test_term.edit_word 'carrotte'
     expect(test_term.word).to eq 'carrotte'
   end
+
+  it "should edit words' definitions" do
+    test_term = Term.new('carrot', 'A delicious vegetable.')
+    test_term.save
+    test_term2 = Term.new('beet', 'A nasty vegetable.')
+    test_term2.save
+    test_term.edit_definition 'A healthy vegetable'
+    expect(test_term.definition).to eq 'A healthy vegetable'
+  end
 end
 
