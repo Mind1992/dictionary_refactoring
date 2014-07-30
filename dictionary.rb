@@ -8,6 +8,7 @@ def main_menu
     puts "3: list all words and their definition"
     puts "4: edit word"
     puts "5: edit definition"
+    puts "6: remove term"
     puts "9: exit"
     user_input = gets.chomp
     if user_input == "1"
@@ -20,6 +21,8 @@ def main_menu
       edit_words
     elsif user_input == "5"
       edit_definitions
+    elsif user_input == "6"
+      remove_term
     elsif  user_input == "9"
       exit
     else
@@ -85,6 +88,16 @@ def edit_definitions
   puts "\n"
   show_definitions
   puts "\n"
+end
+
+def remove_term
+  puts "Select the number of the word and definition you would like to delete"
+  show_definitions
+  selected_term = gets.chomp.to_i
+  term = Term.all[selected_term - 1]
+  term.delete_term
+  puts "The term #{term.word} and its definition #{term.definition} has been deleted from the dictionary"
+  puts "\nYou have no words in your dictionary!!\n\n" if Term.all.length == 0
 end
 
 main_menu

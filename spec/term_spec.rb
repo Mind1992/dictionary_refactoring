@@ -51,5 +51,14 @@ describe Term do
     test_term.edit_definition 'A healthy vegetable'
     expect(test_term.definition).to eq 'A healthy vegetable'
   end
+
+  it 'deletes the specified term including word and definition' do
+    test_term = Term.new('carrot', 'A delicious vegetable.')
+    test_term.save
+    test_term2 = Term.new('beet', 'A nasty vegetable.')
+    test_term2.save
+    test_term.delete_term
+    expect(Term.all).to eq [test_term2]
+  end
 end
 

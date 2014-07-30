@@ -28,4 +28,8 @@ class Term
   def edit_definition(new_definition)
     @definition = new_definition
   end
+
+  def delete_term
+    @@all.delete_if {|term| term == self }
+  end
 end
