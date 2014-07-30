@@ -18,8 +18,9 @@ class Term
   end
 
   def Term.clear
-    @@all
+    @@all = []
   end
+
 
 
 end

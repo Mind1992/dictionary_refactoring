@@ -2,6 +2,10 @@ require 'rspec'
 require 'term'
 
 describe Term do
+  before do
+    Term.clear
+  end
+
   it 'can read word and definition' do
     test_term = Term.new('carrot', 'A delicious vegetable.')
     expect(test_term.word).to eq 'carrot'
@@ -21,11 +25,19 @@ describe Term do
     expect(Term.all).to eq [test_term]
   end
 
-  it 'returns a list of the words from the terms' do
-    test_term = Term.new('carrot', 'A delicious vegetable.')
-    test_term2 = Term.new('cherry', 'A delicious fruit.')
-    test_term.save
-    test_term2.save
-    expect(Term.all_words).to eq ["carrot", "cherry"]
+  describe '.clear' do
+    it 'returns an empty dictionary' do
+      Term.new('carrot', 'A delicious vegetable.').save
+      Term.clear
+      expect(Term.all).to eq []
+    end
   end
+
+  # it 'returns a list of the words from the terms' do
+  #   test_term = Term.new('carrot', 'A delicious vegetable.')
+  #   test_term2 = Term.new('cherry', 'A delicious fruit.')
+  #   test_term.save
+  #   test_term2.save
+  #   expect(Term.all_words).to eq ["carrot", "cherry"]
+  # end
 end
