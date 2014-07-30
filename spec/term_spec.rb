@@ -64,6 +64,7 @@ describe Term do
     new_word = Word.new('carrot')
     new_term.add_word(new_word)
     new_term.save
+
     expect(Term.all[0].words).to eq [new_word]
   end
 
