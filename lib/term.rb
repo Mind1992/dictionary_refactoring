@@ -13,12 +13,16 @@ class Term
     @@dictionary
   end
 
-  def save
-    @@dictionary << self
-  end
-
   def Term.clear
     @@dictionary = []
+  end
+
+  def Term.search(search_word)
+    @@dictionary.each { |term| return term if term.word == search_word }
+  end
+
+  def save
+    @@dictionary << self
   end
 
   def edit_word(new_word)
