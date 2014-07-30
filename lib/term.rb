@@ -1,12 +1,12 @@
 class Term
 
-  attr_accessor :word, :definition
+  attr_accessor :words, :definitions
 
   @@dictionary = []
 
-  def initialize(word, definition)
-    @word = word
-    @definition = definition
+  def initialize
+    @words = []
+    @definitions = []
   end
 
   def Term.all
@@ -41,5 +41,9 @@ class Term
 
   def delete_term
     @@dictionary.delete_if {|term| term == self }
+  end
+
+  def add_word(word)
+    @words << word
   end
 end
