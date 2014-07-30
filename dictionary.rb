@@ -19,7 +19,7 @@ def main_menu
     elsif user_input == "4"
       edit_words
     elsif user_input == "5"
-      edit_definition
+      edit_definitions
     elsif  user_input == "9"
       exit
     else
@@ -59,7 +59,7 @@ def show_definitions
 end
 
 def edit_words
-  puts "Select the number you want to edit"
+  puts "Select the number of the word you want to edit"
   show_words
   selected_word = gets.chomp.to_i
   old_word = Term.all[selected_word - 1]
@@ -73,6 +73,18 @@ def edit_words
   puts "\n"
 end
 
-
+def edit_definitions
+  puts "Select the number of the definition you want to edit"
+  show_definitions
+  selected_word = gets.chomp.to_i
+  old_definition = Term.all[selected_word - 1]
+  puts "\n"
+  puts "Enter the updated version of #{old_definition.definition}"
+  new_definition = gets.chomp
+  old_definition.edit_definition(new_definition)
+  puts "\n"
+  show_definitions
+  puts "\n"
+end
 
 main_menu
