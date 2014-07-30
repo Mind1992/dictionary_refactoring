@@ -41,8 +41,8 @@ end
 def show_words
   #Task.clear
   puts "Your words are\n"
+  i = 1
   Term.all.each do |term|
-    i = 1
     puts "#{i}. " + term.word + "\n"
     i +=1
   end
@@ -50,8 +50,8 @@ end
 
 def show_definitions
   puts "Your words and definitions are\n"
+  i = 1
   Term.all.each do |term|
-    i = 1
     print "#{i}. Word: #{term.word}, "
     print "Definition: #{term.definition}" + "\n"
     i +=1
@@ -62,8 +62,15 @@ def edit_words
   puts "Select the number you want to edit"
   show_words
   selected_word = gets.chomp.to_i
-  puts "#{Term.all[selected_word - 1].word}"
-
+  old_word = Term.all[selected_word - 1]
+  puts "\n"
+  puts "Enter the updated version of #{old_word.word}"
+  new_word = gets.chomp
+  old_word.edit_word(new_word)
+  puts "\n"
+  puts "Your updated list of words is now:"
+  show_words
+  puts "\n"
 end
 
 

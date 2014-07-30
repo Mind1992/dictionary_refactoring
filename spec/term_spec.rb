@@ -37,7 +37,9 @@ describe Term do
     Term.clear
     test_term = Term.new('carrot', 'A delicious vegetable.')
     test_term.save
-    test_term.edit_word('carrotte')
+    test_term2 = Term.new('beet', 'A nasty vegetable.')
+    test_term2.save
+    test_term.edit_word 'carrotte'
     expect(test_term.word).to eq 'carrotte'
   end
 end
