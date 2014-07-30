@@ -107,7 +107,7 @@ def search
   puts "Type the word you want to search for:"
   user_input = gets.chomp
   search_term = Term.search(user_input)
-  if search_term
+  if search_term == false
     puts "There is no term with that name"
     search
   else

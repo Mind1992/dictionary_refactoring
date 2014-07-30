@@ -19,7 +19,11 @@ class Term
 
   def Term.search(search_word)
     result = false
-    @@dictionary.detect {|term| result = term if term.word == search_word }
+    @@dictionary.each do |term|
+      if term.word == search_word
+        result = term
+      end
+    end
     result
   end
 
