@@ -33,11 +33,12 @@ describe Term do
     end
   end
 
-  # it 'returns a list of the words from the terms' do
-  #   test_term = Term.new('carrot', 'A delicious vegetable.')
-  #   test_term2 = Term.new('cherry', 'A delicious fruit.')
-  #   test_term.save
-  #   test_term2.save
-  #   expect(Term.all_words).to eq ["carrot", "cherry"]
-  # end
+  it "should edit terms' words" do
+    Term.clear
+    test_term = Term.new('carrot', 'A delicious vegetable.')
+    test_term.save
+    test_term.edit_word('carrotte')
+    expect(test_term.word).to eq 'carrotte'
+  end
 end
+

@@ -21,6 +21,7 @@ class Term
     @@all = []
   end
 
-
-
+  def edit_word(new_word)
+    @word = new_word
+  end
 end
